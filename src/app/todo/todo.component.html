@@ -1,0 +1,14 @@
+<p>Todo works!</p>
+<div>{{ title }}</div>
+<input [(ngModel)]="name" id="todo" type="text" />
+<button (click)="addTodo()" id="addbutton">AddTodo</button>
+<div>
+  <div *ngFor="let e of todosList" id="todolist">
+    <li id="todo">{{ e.todo }}</li>
+
+    <router-outlet></router-outlet>
+    <button (click)="removeTodo(e._id)" id="removebutton">remove</button>
+  </div>
+  <div *ngIf="todosList.length == 0">Your todo list is empty !</div>
+  <div *ngIf="count != 0">{{ count }}</div>
+</div>
