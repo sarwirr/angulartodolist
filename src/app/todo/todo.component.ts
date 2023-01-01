@@ -26,7 +26,7 @@ export class TodoComponent {
   public todo: any;
 
   addTodo() {
-    this.ts.addTodo({ todo: this.name }).subscribe(
+    this.ts.addTodo({ name: this.name }).subscribe(
       (data) => {
         // alert('success');
         this.ngOnInit();

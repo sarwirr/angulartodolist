@@ -1,0 +1,22 @@
+<div id="logindiv">
+<div>
+<h1> Create and <br>design your notes easily</h1>
+</div>
+<div id="textandform">
+<div id="logintext">
+<h2 id="welcometext"> Welcome Back! </h2>
+<h2>Sign in to your account</h2>
+</div>
+<div>
+<form id="loginform" [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+<input formControlName="email" id="email" type="text" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && loginForm.controls['username'].errors }" />
+<div *ngIf="loginForm.controls['email'].errors" class="invalid-feedback">
+    <div>Username is required</div>
+</div>
+<input formControlName ="password" id="email" type="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls['password'].errors }" />
+<div *ngIf="loginForm.controls['password'].errors" class="invalid-feedback">
+    <div *ngIf="loginForm.controls['password'].errors">Password is required</div>
+</div>
+<button type="submit">Sign In</button>
+</form>
+</div></div></div>

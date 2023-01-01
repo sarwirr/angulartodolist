@@ -9,15 +9,16 @@ export class TodosService {
   todos: any;
   constructor(private http: HttpClient) {}
 
+
   getTodos() {
-    return this.http.get<any[]>('http://localhost:3636/todo');
+    return this.http.get<any[]>('http://localhost:3000/todo1');
   }
 
   addTodo(data: any) {
-    return this.http.post('http://localhost:3636/todo/create', data);
+    return this.http.post('http://localhost:3000/todo1', data );
   }
 
   removeTodo(id: string) {
-    return this.http.delete(`http://localhost:3636/todo/${id}`);
+    return this.http.delete(`http://localhost:3000/todo1/${id}`);
   }
 }

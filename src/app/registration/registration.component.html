@@ -1,0 +1,30 @@
+<body>
+    <div class="session">
+      <div class="left"></div>
+      <form action="" class="log-in" autocomplete="off" [formGroup]="RegistrationForm" (ngSubmit)="onSubmit()"> 
+        <h4>Join us  <span>Now</span></h4>
+        <p>Register</p>
+
+        <div class="floating-label">
+          <input formControlName="name" placeholder="name" type="name" name="name" id="name" autocomplete="off">
+          <label for="name">Name:</label>
+          
+          
+        </div>
+        <div class="floating-label">
+          <input formControlName="email" placeholder="Email" type="email" name="email" id="email" autocomplete="off">
+          <label for="email">Email:</label>
+          
+        </div>
+        
+        <div class="floating-label">
+          <input formControlName="password" placeholder="Password" type="password" name="password" id="password" autocomplete="off">
+          <label for="password">Password:</label>
+          
+          
+        </div>
+        <button type="submit" >Register</button>
+        <a href=""class="discrete" target="_blank">Already have an account ?</a>
+      </form>
+    </div>
+  </body>
