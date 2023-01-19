@@ -11,7 +11,7 @@ export class UsersService {
 
 
  login(data: any) {
-    return this.http.post('http://localhost:3000/user/login', data );
+    return this.http.post('http://localhost:3000/auth/login', data );
   }
 
   register( data:any){

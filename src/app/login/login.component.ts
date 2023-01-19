@@ -29,27 +29,27 @@ export class LoginComponent implements OnInit {
         // this.us.logout();
         
         // get return url from route parameters or default to '/'    
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';  
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todo';  
     }
     
     
     
     onSubmit() {
-
-      
-        
-        // // stop here if form is invalid    
+ 
         if (this.loginForm.invalid) {
             return;    
         }
         
-        this.us.login({ email: this.loginForm.get("email")?.value , password: this.loginForm.get("password")?.value})
-            .pipe(first())
-            .subscribe(data => {
+        this.us.login({ username: this.loginForm.get("email")?.value , password: this.loginForm.get("password")?.value})
+            .pipe(first()).subscribe((data:any) => {
                 this.error = '';
+                // console.log (data);
+                localStorage.setItem('token', data.access_token );
+
                 this.router.navigate([this.returnUrl]);
             }, error => {
                 this.error = error;
+
             });
     }
 }

@@ -13,10 +13,21 @@ export class Todo1Interceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request.clone({
-      setHeaders: {
-        Authorization: `Basic`
-      }
-  }));
+
+   // Get the user's token
+   const token = localStorage.getItem('token');
+
+   // Add the user's token to the request header
+   if (token) {
+     request = request.clone({
+       setHeaders: {
+         Authorization: `Bearer ${token}`
+       }
+     });
+   }
+
+   // Send the modified request
+   return next.handle(request);
+   
   }
 }

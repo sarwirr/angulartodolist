@@ -1,15 +1,31 @@
 
-<div >{{ title }}</div>
-<div id="todolist_main">
-<input [(ngModel)]="name" id="todo" type="text" />
-<button (click)="addTodo()" id="addbutton">AddTodo</button>
-<div>
-  <div *ngFor="let e of todosList" id="todolist">
-    <li id="todo">{{ e.name }}</li>
 
-    <router-outlet></router-outlet>
-    <button (click)="removeTodo(e._id)" id="removebutton">remove</button>
-  </div>
-  <div *ngIf="todosList.length == 0">Your todo list is empty !</div>
-  <div *ngIf="count != 0">{{ count }}</div></div>
+<body>
+  <div class="container-fluid" ng-app="myTodoApp" ng-controller="myTodoCtrl">
+  <div class="container">
+    
+<div id="todo-container"><h1>todo in angular</h1>
+  <div id="hereistheinputandthebutton">
+<input [(ngModel)]="name" name="todo" id="todo" type="text" placeholder="What needs to be done?"/>
+<button (click)="addTodo()"  class="btn" id="addbutton" >AddTodo</button>
 </div>
+  <div *ngFor="let e of todosList" id="todolist">
+  <ul class="todo-list justify-content-unset">
+  <li class="item d-flex" id="item" >
+    {{ e.name }}</li>
+ <button (click)="removeTodo(e._id)" class="btn" id="removebutton">remove</button>
+
+    </ul>
+</div> 
+  <div *ngIf="todosList.length == 0">Your todo list is empty !</div>
+  <div *ngIf="count != 0">
+    <p>
+      You Have : {{ count }} Todos
+    </p></div>
+</div>
+</div>
+</div>
+
+
+
+</body>
