@@ -7,7 +7,7 @@
 <div id="todo-container"><h1>todo in angular</h1>
   <div id="hereistheinputandthebutton">
 <input [(ngModel)]="name" name="todo" id="todo" type="text" placeholder="What needs to be done?"/>
-<button (click)="addTodo()"  class="btn" id="addbutton" >AddTodo</button>
+<button (click)="addTodo()" class="btn" id="addbutton" >AddTodo</button>
 </div>
   <div *ngFor="let e of todosList" id="todolist">
   <ul class="todo-list justify-content-unset">
@@ -25,7 +25,4 @@
 </div>
 </div>
 </div>
-
-
-
 </body>

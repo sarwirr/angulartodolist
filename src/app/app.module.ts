@@ -9,11 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Todo1Interceptor } from './todo1.interceptor';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, TodoComponent, HomeComponent , LoginComponent, RegistrationComponent],
-  imports: [FormsModule,ReactiveFormsModule, BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: Todo1Interceptor, multi: true }],
+  imports: [FormsModule,ReactiveFormsModule, BrowserModule, AppRoutingModule, MatSlideToggleModule, HttpClientModule, BrowserAnimationsModule],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: Todo1Interceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

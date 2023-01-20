@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { TodosService } from '../todos.service';
 @Component({
   selector: 'app-todo',
@@ -7,7 +8,7 @@ import { TodosService } from '../todos.service';
 })
 export class TodoComponent {
   count = 0;
-  constructor(private ts: TodosService) {}
+  constructor(private ts: TodosService, ) {}
 
   todosList: any[] = [];
   @Input() title = '';
@@ -28,11 +29,13 @@ export class TodoComponent {
   addTodo() {
     this.ts.addTodo({ name: this.name }).subscribe(
       (data) => {
-        // alert('success');
+        // Simple message with an action.
+     
         this.ngOnInit();
       },
       (err) => console.log(err)
     );
+    // this._snackBar.open('Todo Added', 'dismiss');
   }
 
   removeTodo(id: string) {
@@ -40,4 +43,6 @@ export class TodoComponent {
       this.ngOnInit();
     });
   }
+
+
 }
