@@ -25,6 +25,7 @@ export function tokenGetter() {
       tokenGetter: tokenGetter,
     },
   }), 
+  
 ],
   providers: [
     { 
@@ -32,7 +33,7 @@ export function tokenGetter() {
       useClass: Todo1Interceptor, 
       multi: true, 
     }, 
-    { provide: 'JWT_TOKEN', useValue: 'token' }
+    { provide: 'JWT_TOKEN', useValue: 'token' },
   ],
   bootstrap: [AppComponent],
 })
