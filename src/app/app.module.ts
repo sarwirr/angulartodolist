@@ -11,11 +11,27 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
+
 
 @NgModule({
   declarations: [AppComponent, TodoComponent, HomeComponent , LoginComponent, RegistrationComponent],
-  imports: [FormsModule,ReactiveFormsModule, BrowserModule, AppRoutingModule, MatSlideToggleModule, HttpClientModule, BrowserAnimationsModule],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: Todo1Interceptor, multi: true },
+  imports: [FormsModule,ReactiveFormsModule, BrowserModule, AppRoutingModule, MatSlideToggleModule, HttpClientModule, BrowserAnimationsModule,
+    JwtModule.forRoot({
+    config: {
+      tokenGetter: tokenGetter,
+    },
+  }), 
+],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: Todo1Interceptor, 
+      multi: true, 
+    }
   ],
   bootstrap: [AppComponent],
 })

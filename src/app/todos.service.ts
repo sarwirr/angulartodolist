@@ -11,7 +11,7 @@ export class TodosService {
 
 
   getTodos() {
-    return this.http.get<any[]>('http://localhost:3000/todo1');
+    return this.http.get<any[]>('http://localhost:3000/todo1'  );
   }
 
   addTodo(data: any) {
