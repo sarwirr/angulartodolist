@@ -31,7 +31,8 @@ export function tokenGetter() {
       provide: HTTP_INTERCEPTORS, 
       useClass: Todo1Interceptor, 
       multi: true, 
-    }
+    }, 
+    { provide: 'JWT_TOKEN', useValue: 'token' }
   ],
   bootstrap: [AppComponent],
 })

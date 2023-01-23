@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Todo } from './todo/todo.component';
 
 
 @Injectable({
@@ -29,6 +30,9 @@ export class UsersService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
+    findalltodos(){
+      return this.http.get<Todo[]>('http://localhost:3000/user/findalltodos');
+    }
 
   register( data:any){
     return this.http.post('http://localhost:3000/user/register', data );

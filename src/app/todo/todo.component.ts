@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { TodosService } from '../todos.service';
 import { UsersService } from '../user.service';
-import { Router } from '@angular/router';
+
+import { Inject } from '@angular/core';
+
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -13,18 +15,17 @@ export class TodoComponent {
 
   constructor(private ts: TodosService, 
     private us : UsersService,
-    private router: Router) {}
+    
+    @Inject('JWT_TOKEN') private token: string) {}
 
-  todosList: any[] = [];
+  todosList: Todo[] = [];
   @Input() title = '';
   @Input() items: any[] = [];
 
   name: string = '';
 
   ngOnInit(): void {
-
-
-    this.ts.getTodos().subscribe((data) => {
+    this.us.findalltodos().subscribe((data: Todo[]) => {
       console.log(data);
       this.todosList = [...data, ...this.items];
       this.count = this.todosList.length;
@@ -52,4 +53,10 @@ export class TodoComponent {
   }
 
 
+}
+
+ export interface Todo {
+  _id: string;
+  name: string;
+  
 }
