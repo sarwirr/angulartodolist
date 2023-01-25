@@ -1,7 +1,10 @@
 * {
   box-sizing: border-box;
 }
-
+ .container{
+  position: relative;
+  top: 50px;
+ }
 
 
 #hereistheinputandthebutton{
@@ -75,6 +78,13 @@ button {
 
 button:focus {
   outline: none;
+}
+
+#logoutbutton{
+  position: absolute;
+  top: 0px;
+  right: 10px;
+
 }
 ul.todo-list{
   display: flex;

@@ -3,7 +3,7 @@
 <body>
   <div class="container-fluid" ng-app="myTodoApp" ng-controller="myTodoCtrl">
   <div class="container">
-    
+    <button (click)="logout()" id="logoutbutton"> Logout </button>
 <div id="todo-container"><h1>todo in angular</h1>
   <div id="hereistheinputandthebutton">
 <input [(ngModel)]="name" name="todo" id="todo" type="text" placeholder="What needs to be done?"/>

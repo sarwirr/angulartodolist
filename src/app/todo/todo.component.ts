@@ -3,6 +3,7 @@ import { TodosService } from '../todos.service';
 import { UsersService } from '../user.service';
 
 import { Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -15,6 +16,7 @@ export class TodoComponent {
 
   constructor(private ts: TodosService, 
     private us : UsersService,
+    private router : Router,
     
     @Inject('JWT_TOKEN') private token: string) {}
 
@@ -50,6 +52,11 @@ export class TodoComponent {
     this.ts.removeTodo(id).subscribe((data) => {
       this.ngOnInit();
     });
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 
 
