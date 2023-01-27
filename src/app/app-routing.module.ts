@@ -6,15 +6,18 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { IsSignedInGuard } from './is-signed-in-guard';
 import { StaySignedInGuard } from './stay-signed-in.guard';
+import { AdminGuardGuard } from './admin-guard.guard';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , canActivate : [StaySignedInGuard]},
   {path: 'todo',
   component: TodoComponent,
-  canActivate: [IsSignedInGuard]
+  canActivate: [IsSignedInGuard ]
   },
   { path: 'login', component: LoginComponent,  canActivate : [StaySignedInGuard]},
   { path: 'registration', component: RegistrationComponent , canActivate : [StaySignedInGuard]},
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuardGuard]}
   
 ];
 

@@ -39,6 +39,10 @@ export class UsersService {
  
   }
 
+  showmeroles(){
+    return this.http.get('http://localhost:3000/user/showmeroles');
+  }
+
   getprofile(data : any) {
     return this.http.get('http://localhost:3000/profile', data );
   }

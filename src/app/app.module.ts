@@ -12,13 +12,14 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
+import { AdminComponent } from './admin/admin.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
 
 
 @NgModule({
-  declarations: [AppComponent, TodoComponent, HomeComponent , LoginComponent, RegistrationComponent],
+  declarations: [AppComponent, TodoComponent, HomeComponent , LoginComponent, RegistrationComponent, AdminComponent],
   imports: [FormsModule,ReactiveFormsModule, BrowserModule, AppRoutingModule, MatSlideToggleModule, HttpClientModule, BrowserAnimationsModule,
     JwtModule.forRoot({
     config: {
