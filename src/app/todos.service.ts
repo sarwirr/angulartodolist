@@ -18,6 +18,10 @@ export class TodosService {
     return this.http.post('http://localhost:3000/todo1', data );
   }
 
+  addtodoforuser(data:any, id:any ) {
+    return this.http.post(`http://localhost:3000/todo1/createforuser/${id}`, data);
+  }
+
   removeTodo(id: string) {
     return this.http.delete(`http://localhost:3000/todo1/${id}`);
   }

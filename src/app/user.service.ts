@@ -39,8 +39,13 @@ export class UsersService {
  
   }
 
+  findallusers (){
+    return this.http.get<any[]>('http://localhost:3000/user/findall');
+  }
+
   showmeroles(){
-    return this.http.get('http://localhost:3000/user/showmeroles');
+    const user = JSON.parse(localStorage.getItem('user')|| '{}');  
+    return user.roles;
   }
 
   getprofile(data : any) {
@@ -49,6 +54,10 @@ export class UsersService {
  
   finduserbyid(id: any) {
     return this.http.get(`http://localhost:3000/user/finduserbyid/${id}`);
+  }
+
+  findusername(id: any){
+    return this.http.get(`http://localhost:3000/user/findnameofuserbyid/${id}`);
   }
 
 }

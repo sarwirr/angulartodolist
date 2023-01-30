@@ -16,10 +16,11 @@ export class AdminGuardGuard implements CanActivate {
     
     
       const token = localStorage.getItem('token');
+
     if (token && this.us.isAuthenticated()) {
-      return lastValueFrom(this.us.showmeroles()).then((res: any) => {
-    console.log(res.roles);
-        if (res.roles === Roles.ADMIN) {
+      const res = this.us.showmeroles();
+  
+        if (res === Roles.ADMIN) {
           return true;
         }
         else 
@@ -27,8 +28,9 @@ export class AdminGuardGuard implements CanActivate {
           this.router.navigate(['todo']);
           return false;
         }
-      })
+      
     }
+    this.router.navigate(['login']);
    return false ;
     }
   }

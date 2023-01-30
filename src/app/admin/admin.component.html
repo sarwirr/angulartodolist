@@ -1,1 +1,30 @@
-<p>admin works!</p>
+<div class="container">
+    <button (click)="logout()" id="logoutbutton"> Logout </button>
+    <div id="todo-container">
+        <h1>Ahla bel Admin</h1>
+        <div id="hereistheinputandthebutton">
+            <input [(ngModel)]="name" name="todo" id="todo" type="text" placeholder="What needs to be done?" (keyup.enter)="addTodo()"/> 
+            <select [(ngModel)]="selectedUser" name="selectedUser" #userSelect> 
+                <option *ngIf="!selectedUser" [value]="null">Select a user</option> 
+                <option *ngFor="let user of users" [value]="user._id">{{ user.name }}</option>
+            </select>
+            <button (click)="addTodo()" class="btn" id="addbutton" [disabled]="!name || !userSelect.value">Add Todo</button> 
+        </div>
+
+        <div *ngFor="let e of todosList" id="todolist">
+            <ul class="todo-list justify-content-unset">
+               
+                <li class="item d-flex" id="item" >
+                    {{ e.name }} is assigned to => {{ (e.owner.name)}}
+                </li>
+                <button (click)="removeTodo(e._id)" class="btn" id="removebutton">Remove</button> 
+            </ul>
+        </div>
+        <div *ngIf="todosList.length === 0">Nobody has todos to do !</div>
+        <div *ngIf="count !== 0">
+            <p>
+                You Have : {{ count }} Todos
+            </p>
+        </div>
+    </div>
+</div>

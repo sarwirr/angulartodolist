@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
                 this.error = '';
                 // console.log (data);
                 localStorage.setItem('token', data.access_token );
+                localStorage.setItem('user', JSON.stringify(data.user));
 
                 this.router.navigate([this.returnUrl]);
             }, error => {

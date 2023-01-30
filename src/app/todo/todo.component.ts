@@ -4,6 +4,8 @@ import { UsersService } from '../user.service';
 
 import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Roles } from 'src/roles.enum';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-todo',
@@ -12,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class TodoComponent {
   count = 0;
+  roles :any;
+
 
 
   constructor(private ts: TodosService, 
@@ -59,8 +63,27 @@ export class TodoComponent {
     this.router.navigate(['login']);
   }
 
+  nagivatetoadmin(){ 
+    this.router.navigate(['admin']);
+  }
+
+
+
+showadminbutton(){    
+ const role = this.us.showmeroles();
+   
+      if(role == Roles.ADMIN)
+      {
+        return true;
+      }
+      else
+     return false;
+    }
 
 }
+
+
+
 
  export interface Todo {
   _id: string;
