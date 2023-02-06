@@ -1,30 +1,60 @@
-<div class="container">
-    <button (click)="logout()" id="logoutbutton"> Logout </button>
-    <div id="todo-container">
-        <h1>Ahla bel Admin</h1>
-        <div id="hereistheinputandthebutton">
-            <input [(ngModel)]="name" name="todo" id="todo" type="text" placeholder="What needs to be done?" (keyup.enter)="addTodo()"/> 
-            <select [(ngModel)]="selectedUser" name="selectedUser" #userSelect> 
-                <option *ngIf="!selectedUser" [value]="null">Select a user</option> 
-                <option *ngFor="let user of users" [value]="user._id">{{ user.name }}</option>
-            </select>
-            <button (click)="addTodo()" class="btn" id="addbutton" [disabled]="!name || !userSelect.value">Add Todo</button> 
-        </div>
 
-        <div *ngFor="let e of todosList" id="todolist">
-            <ul class="todo-list justify-content-unset">
+    <mat-toolbar>
+    <button mat-raised-button color="primary" (click)="logout()" id="logoutbutton"> Logout </button>
+    
+        <span>Ahla Bel Admin </span> 
+    </mat-toolbar> 
+        
+    <!-- <mat-grid-list cols="2">
+
+        <mat-grid-tile >  -->
+            <div class="section">
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Type Task</mat-label>
+            <input matInput type="text" [(ngModel)]="name" name="todo" id="todo" type="text" placeholder="What needs to be done?" (keyup.enter)="addTodo()"/> 
+            <button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="example-form-field">
+            <mat-select [(ngModel)]="selectedUser" name="selectedUser" #userSelect> 
+                <mat-option *ngIf="!selectedUser" [value]="null">Select a user</mat-option> 
+                <mat-option *ngFor="let user of users" [value]="user._id">{{ user.name }}</mat-option>
+            </mat-select>    
+        </mat-form-field>
+
+        <button mat-raised-button color="primary"(click)="addTodo()" class="btn" id="addbutton" [disabled]="!name || !userSelect.value">Add Todo</button>
+</div>
+        <!-- </mat-grid-tile>
+
+
+        <mat-grid-tile id="listofusers"> -->
+<div class="section">
+        
+        <div *ngFor="let e of todosList" id="todolist"><mat-card>
+            <mat-card-header>
                
                 <li class="item d-flex" id="item" >
-                    {{ e.name }} is assigned to => {{ (e.owner.name)}}
+                    {{ e.name }} is assigned to <br>  <span>{{ (e.owner.name)}}</span>
                 </li>
-                <button (click)="removeTodo(e._id)" class="btn" id="removebutton">Remove</button> 
-            </ul>
-        </div>
-        <div *ngIf="todosList.length === 0">Nobody has todos to do !</div>
+            </mat-card-header>
+                <mat-card-actions align="end">
+                <button mat-button (click)="removeTodo(e._id)" class="btn" id="removebutton"> Remove
+                    
+                </button> 
+            </mat-card-actions>
+            
+            <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+       </mat-card> </div>
+        <!-- </mat-grid-tile>
+    </mat-grid-list> -->
+</div>
+        <div *ngIf="count === 0">Nobody has todos to do !</div>
         <div *ngIf="count !== 0">
             <p>
                 You Have : {{ count }} Todos
             </p>
         </div>
-    </div>
-</div>
+    
+

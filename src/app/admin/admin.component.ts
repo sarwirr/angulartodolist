@@ -1,29 +1,33 @@
 import { useAnimation } from '@angular/animations';
 import { Component, Inject, Input } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { TodosService } from '../todos.service';
 import { UsersService } from '../user.service';
-
+import { ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AdminComponent {
 
   selectedUser: any;
   user_id: any;
+ 
 
   constructor(
     private us: UsersService,
     private router: Router,
     private ts: TodosService,
+    private _snackBar: MatSnackBar,
     @Inject('JWT_TOKEN') private token: string
   ) {}
 
-  users : any[] | undefined;
-  todosList: Todo[] = [];
+  users : any[] | undefined; 
+  todosList: any[] | undefined;
   @Input() title = '';
   @Input() items: any[] = [];
 
@@ -32,9 +36,10 @@ export class AdminComponent {
   name = '';
 
   ngOnInit(): void {
-    this.ts.getTodos().subscribe((data: Todo[]) => {
+    this.ts.getTodos().subscribe((todosList : Array<any>) => {
     
-      this.todosList = [...data, ...this.items];
+      this.todosList = [...todosList];
+      console.log(this.todosList);
       this.count = this.todosList.length;
     });
 
@@ -62,6 +67,8 @@ export class AdminComponent {
       .subscribe(
         (data) => {
           this.ngOnInit();
+          this._snackBar.open("todo added", 'close', { duration: 2000});
+
         },
         (err) => {
         console.log(err);

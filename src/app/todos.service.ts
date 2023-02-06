@@ -10,7 +10,8 @@ export class TodosService {
   constructor(private http: HttpClient) {}
 
 
-  getTodos() {
+  getTodos() 
+  {
     return this.http.get<any[]>('http://localhost:3000/todo1'  );
   }
 
@@ -18,7 +19,8 @@ export class TodosService {
     return this.http.post('http://localhost:3000/todo1', data );
   }
 
-  addtodoforuser(data:any, id:any ) {
+  addtodoforuser(data:any, id:any ) 
+  {
     return this.http.post(`http://localhost:3000/todo1/createforuser/${id}`, data);
   }
 

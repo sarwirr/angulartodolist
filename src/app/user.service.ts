@@ -30,7 +30,7 @@ export class UsersService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-    findalltodos(){
+  findalltodos(){
       return this.http.get<Todo[]>('http://localhost:3000/user/findalltodos');
     }
 

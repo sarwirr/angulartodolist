@@ -1,0 +1,23 @@
+button + span{
+    margin: 20px;
+}
+
+
+.example-form-field {
+    margin: 10px;
+    width: 300px;
+    display: block;
+    
+  }
+  
+#addbutton {
+    margin: 10px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.section {
+  display: block;
+}

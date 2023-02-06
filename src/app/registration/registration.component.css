@@ -50,10 +50,10 @@ color: #ffffff;
 
 h2 {
   position: relative;
-  
+  font-family: 'Inter';
  margin: 100px;
-font-family: 'Inter';
-font-weight: bold;
+ font-weight: 700;
+    font-size: 40px;
 }
 
 
