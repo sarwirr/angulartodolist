@@ -1,16 +1,16 @@
-import { useAnimation } from '@angular/animations';
+
 import { Component, Inject, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
+
 import { TodosService } from '../todos.service';
 import { UsersService } from '../user.service';
-import { ViewEncapsulation } from '@angular/core';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  
 })
 export class AdminComponent {
 
@@ -39,13 +39,13 @@ export class AdminComponent {
     this.ts.getTodos().subscribe((todosList : Array<any>) => {
     
       this.todosList = [...todosList];
-      console.log(this.todosList);
+    
       this.count = this.todosList.length;
     });
 
     this.us.findallusers().subscribe((users: Array<any>) => {
       this.users = [...users]
-     console.log(users);}   
+     }   
 
       )
       ;

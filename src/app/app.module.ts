@@ -23,6 +23,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatMenuModule} from '@angular/material/menu';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -30,7 +33,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [AppComponent, TodoComponent, HomeComponent , LoginComponent, RegistrationComponent, AdminComponent],
-  imports: [FormsModule,ReactiveFormsModule,MatGridListModule,MatProgressBarModule,MatCardModule,MatInputModule,MatSelectModule,MatIconModule, BrowserModule, AppRoutingModule, MatSlideToggleModule,MatAutocompleteModule, MatButtonModule,HttpClientModule, MatToolbarModule,BrowserAnimationsModule,MatSnackBarModule,
+  imports: [FormsModule,MatBadgeModule,MatMenuModule,MatDialogModule,ReactiveFormsModule,MatGridListModule,MatProgressBarModule,MatCardModule,MatInputModule,MatSelectModule,MatIconModule, BrowserModule, AppRoutingModule, MatSlideToggleModule,MatAutocompleteModule, MatButtonModule,HttpClientModule, MatToolbarModule,BrowserAnimationsModule,MatSnackBarModule,
     JwtModule.forRoot({
     config: {
       tokenGetter: tokenGetter,

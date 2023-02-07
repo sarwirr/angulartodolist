@@ -6,6 +6,9 @@
   top: 50px;
  }
 
+ #mat-menu {
+  width: 30px;
+ }
 
 #hereistheinputandthebutton{
   display: flex;

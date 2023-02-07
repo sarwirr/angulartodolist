@@ -5,6 +5,7 @@ import { UsersService } from '../user.service';
 import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Roles } from 'src/roles.enum';
+import { NotificationService } from '../notification.service';
 
 
 @Component({
@@ -15,27 +16,34 @@ import { Roles } from 'src/roles.enum';
 export class TodoComponent {
   count = 0;
   roles :any;
-
-
+shownotif : boolean = false;
+countnotif =0;
 
   constructor(private ts: TodosService, 
     private us : UsersService,
     private router : Router,
+    private ns: NotificationService,
     
     @Inject('JWT_TOKEN') private token: string) {}
 
   todosList: Todo[] = [];
   @Input() title = '';
   @Input() items: any[] = [];
-
+  notifs : any[] = [];
   name: string = '';
 
   ngOnInit(): void {
     this.us.findalltodos().subscribe((data: Todo[]) => {
-      console.log(data);
       this.todosList = [...data, ...this.items];
       this.count = this.todosList.length;
     });
+
+    
+    this.ns.getnotifications().subscribe((notifs : Array<any>) => {
+      this.notifs = [...notifs];
+      this.countnotif = this.notifs.length;
+    });
+  
   }
 
   public todo: any;
@@ -79,6 +87,15 @@ showadminbutton(){
       else
      return false;
     }
+
+  
+
+    deletenotif(id: any){
+      this.ns.deletenotification(id).subscribe((data) => {
+        this.ngOnInit();
+      });
+    }
+
 
 }
 

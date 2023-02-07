@@ -4,6 +4,16 @@
   <div class="container-fluid" ng-app="myTodoApp" ng-controller="myTodoCtrl">
   <div class="container">
     <button (click)="logout()" id="logoutbutton"> Logout </button>
+    <button mat-fab color="accent" matBadge="{{countnotif}}" matBadgeColor="accent" aria-label="Example icon button with a bookmark icon" [matMenuTriggerFor]="menu">  
+    <mat-icon>bookmark</mat-icon>
+    </button>
+
+    <mat-menu id="mat-menu"#menu="matMenu">
+      <div *ngFor="let i of notifs">
+        <button mat-menu-item (click)="deletenotif(i._id)"> {{i.description}}</button>
+      </div>
+    </mat-menu>
+
 
     <div *ngIf="showadminbutton()">
     <button (click)="nagivatetoadmin()"> Check Admin page </button>
